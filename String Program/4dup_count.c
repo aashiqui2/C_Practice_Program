@@ -2,7 +2,7 @@
 #include <ctype.h>
 
 int main() {
-    char input[] = "t4d2";  
+    char input[] = "t14d2";  
     char output[100]; 
     int i = 0, j = 0;
 
