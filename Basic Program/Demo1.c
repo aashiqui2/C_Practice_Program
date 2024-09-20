@@ -5,6 +5,7 @@ void square_root(int);
 void prime_number(int);
 void prime_number_range(int, int);
 void prime_factor(int);
+void decimalToBinary(int);
 int main()
 {
     // least_common_multiple(3, 9);
@@ -12,6 +13,7 @@ int main()
     // square_root(16);
     // prime_number_range(400, 562);
     // prime_factor(29);//45,29
+    // decimalToBinary(13);
     return 0;
 }
 void least_common_multiple(int a, int b)
@@ -43,13 +45,13 @@ void greatest_common_multiple(int a, int b)
     // printf("%d\n", last);
 
     //? Euclidean algorithm
-    while (b != 0) {
+    while (b != 0)
+    {
         int temp = b;
         b = a % b;
         a = temp;
     }
-    printf("%d",a);
-    
+    printf("%d", a);
 }
 void square_root(int n)
 {
@@ -80,24 +82,65 @@ void prime_number_range(int start, int end)
         }
     }
 }
-void prime_factor(int n) {
-   
-    while (n % 2 == 0) {
+void prime_factor(int n)
+{
+
+    while (n % 2 == 0)
+    {
         printf("%d ", 2);
         n /= 2;
     }
 
-  
-    for (int i = 3; i*i<= n; i += 2) {
-        while (n % i == 0) {
+    for (int i = 3; i * i <= n; i += 2)
+    {
+        while (n % i == 0)
+        {
             printf("%d ", i);
             n /= i;
         }
     }
 
-    if (n > 2) {
+    if (n > 2)
+    {
         printf("%d ", n);
     }
 }
+void decimalToBinary(int n)
+{
+    int binaryNum[32];
+    int i = 0;
+    if (n == 0)
+    {
+        printf("0");
+        return;
+    }
+    while (n > 0)
+    {
+        binaryNum[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+    for (int j = i - 1; j >= 0; j--)
+    {
+        printf("%d", binaryNum[j]);
+    }
+}
 
+void printBinary(int n)
+{
+    unsigned int mask = 1 << (sizeof(n) * 8 - 1); // Create a mask for the most significant bit
 
+    // Iterate over all bits, starting from the most significant bit
+    for (int i = 0; i < sizeof(n) * 8; i++)
+    {
+        if (n & mask)
+        {
+            printf("1");
+        }
+        else
+        {
+            printf("0");
+        }
+        mask >>= 1; // Shift the mask one position to the right
+    }
+}
